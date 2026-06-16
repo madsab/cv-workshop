@@ -41,3 +41,6 @@ Se [README.md](https://github.com/cxberk/cv-workshop/blob/main/frontend/README.m
 ## Infrastruktur
 
 [README.md](https://github.com/computas/cv-workshop/tree/main/infrastructure)
+
+
+Test pipeline
