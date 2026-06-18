@@ -1,3 +1,14 @@
+.noExperiences {
+  margin-top: 20px;
+  border: dashed 8px pink;
+  border-radius: 20px;
+
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .experiences {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -38,4 +49,11 @@
   align-self: flex-end;
   margin-left: auto;
   width: 200px;
+}
+
+.img {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+  animation: spin 1s linear infinite;
 }
