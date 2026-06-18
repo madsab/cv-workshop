@@ -13,26 +13,31 @@ public class CvService(AppDbContext context) : ICvService
     }
 
     // TODO: Oppgave 1
+    
 
     public async Task<IEnumerable<Experience>> GetAllExperiencesAsync()
     {
         // TODO: Oppgave 2
-        return [];
+
+        return await context.Experiences.ToListAsync();
+    }
+    public async Task<User> GetUserByIdAsync(Guid id)
+    {
+        return await context.Users.FindAsync(id);
     }
 
     public async Task<Experience?> GetExperienceByIdAsync(Guid id)
     {
-        // TODO: Oppgave 2
-
-        return null;
+        // TODO: Oppgave 2        
+        return await context.Experiences.FindAsync(id);
     }
 
     public async Task<IEnumerable<Experience>> GetExperiencesByTypeAsync(string type)
     {
-        // TODO: Oppgave 3
-
-        return [];
+        // TODO: Oppgave 3        
+        return await context.Experiences.Where(e => e.Type == type).ToListAsync();
     }
+
 
     // TODO: Oppgave 4 ny metode (husk å legge den til i interfacet)
 }

@@ -19,3 +19,12 @@ namespace backend.Data.Models
         public User? User { get; init; }
     }
 }
+
+enum ExperienceType
+{
+    WORK,
+    EDUCATION,
+    HOBBY_PROJECT,
+    VOLUNTARY,
+    COACH,
+}
