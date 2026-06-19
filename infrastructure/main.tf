@@ -43,43 +43,6 @@ resource "random_password" "db-password" {
   special = true
 }
 
-resource "upcloud_firewall_rules" "server" {
-  server_id = upcloud_server.server.id
-
-  firewall_rule {
-    direction = "in"
-    action    = "accept"
-    protocol  = "tcp"
-    destination_port_start = "80"
-    destination_port_end   = "80"
-    comment = "Allow HTTP"
-  }
-
-  firewall_rule {
-    direction = "in"
-    action    = "accept"
-    protocol  = "tcp"
-    destination_port_start = "443"
-    destination_port_end   = "443"
-    comment = "Allow HTTPS"
-  }
-
-  firewall_rule {
-    direction = "in"
-    action    = "accept"
-    protocol  = "tcp"
-    destination_port_start = "22"
-    destination_port_end   = "22"
-    comment = "Allow SSH"
-  }
-
-  firewall_rule {
-    direction = "in"
-    action    = "drop"
-    comment   = "Drop all other inbound"
-  }
-}
-
 resource "null_resource" "deploy" {
   triggers = {
     server_id    = upcloud_server.server.id
