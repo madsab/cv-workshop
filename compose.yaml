@@ -3,13 +3,19 @@ services:
     image: caddy:2-alpine
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     environment:
       CADDY_HOST: ${CADDY_HOST:-:80}
     command: >
       sh -c 'echo "$${CADDY_HOST} {
-        reverse_proxy /api/* backend:8080
+        @api path /api/*
+        @options method OPTIONS
+        header @api Access-Control-Allow-Origin *
+        header @api Access-Control-Allow-Methods `GET, POST, PUT, DELETE, OPTIONS, PATCH`
+        header @api Access-Control-Allow-Headers `Content-Type, Authorization`
+        respond @options 204
+        reverse_proxy @api backend:8080
         reverse_proxy * frontend:3000
       }" | caddy run --config /dev/stdin --adapter caddyfile'
 
@@ -33,6 +39,7 @@ services:
   database:
     image: postgres:18-alpine
     restart: unless-stopped
+    # ports: ["5432:5432"]
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
@@ -40,7 +47,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/18/docker
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       retries: 5
 

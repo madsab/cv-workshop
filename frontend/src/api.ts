@@ -1,7 +1,7 @@
 import { Meme } from "./types";
 import { User, Experience } from "./types/types";
 
-const API_URL = "http://localhost:5007";
+const API_URL = "/api";
 const MEME_API_URL = "https://justmeme.wtf/api/v1/random";
 const KANYE_API_URL = "https://api.kanye.rest/";
 

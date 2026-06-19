@@ -72,8 +72,8 @@ export default function Experiences() {
           )}
         </div>
         <>
-          {filteredExperiences().map((ex) => (
-            <ExperienceCard experience={ex} />
+          {filteredExperiences().map((ex, index) => (
+            <ExperienceCard key={index} experience={ex} />
           ))}
         </>
       </div>
