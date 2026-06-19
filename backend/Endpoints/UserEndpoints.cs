@@ -7,7 +7,7 @@ namespace backend.Endpoints;
 
 public static class UserEndpoints
 {
-    public static void MapUserEndpoints(this WebApplication app)
+    public static void MapUserEndpoints(this IEndpointRouteBuilder app)
     {
         // GET /users
         app.MapGet(

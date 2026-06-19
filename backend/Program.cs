@@ -43,9 +43,10 @@ app.UseCorsPolicy();
 // TODO: Skal vi ha med API-key?
 // app.UseMiddleware<ApiKeyMiddleware>();
 
-// Koble til GET-endepunkter
-app.MapUserEndpoints();
-app.MapExperienceEndpoints();
+// Koble til GET-endepunkter under /api (Caddy ruter /api/* hit uten å strippe prefiks)
+var api = app.MapGroup("/api");
+api.MapUserEndpoints();
+api.MapExperienceEndpoints();
 
 // Kjør applikasjonen
 app.Run();

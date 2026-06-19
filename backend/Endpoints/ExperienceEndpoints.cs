@@ -5,7 +5,7 @@ namespace backend.Endpoints;
 
 public static class ExperienceEndpoints
 {
-    public static void MapExperienceEndpoints(this WebApplication app)
+    public static void MapExperienceEndpoints(this IEndpointRouteBuilder app)
     {
         // GET /experiences
         app.MapGet(
